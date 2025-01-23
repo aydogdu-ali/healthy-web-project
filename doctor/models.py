@@ -7,8 +7,6 @@ from userauths import models as userauths_models
 # #doktor modelini oluşturuyoruz.
 
 
-
-
 class Doctor(models.Model):
     user = models.OneToOneField(userauths_models.User, on_delete=models.CASCADE)
     image = models.FileField(upload_to="images", null=True, blank=True)
