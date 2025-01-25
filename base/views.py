@@ -2,7 +2,10 @@ from django.shortcuts import render,redirect
 
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 
+import stripe
 from base import models as base_models
 from doctor import models as doctor_models
 from patient import models as patient_models
@@ -85,7 +88,8 @@ def book_appointment(request, service_id, doctor_id):
     }
     return render(request, "base/book_appointment.html", context)
 
-
+# sadece giriş yapan user burayı göremesi için
+@login_required
 def checkout(request,billing_id):
     billing= base_models.Billing.objects.get(billing_id=billing_id)
     
@@ -97,3 +101,9 @@ def checkout(request,billing_id):
 
      }
     return render(request, "base/checkout.html", context)
+
+
+@csrf_exempt
+def stripe_payment(request, billing_id):
+    billing= base_models.Billing.objects.get(billing_id)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
