@@ -141,7 +141,7 @@ def stripe_payment_verify(request, billing_id):
         if billing.status =="Unpaid":
             billing.status= "Paid"
             billing.save()
-            billing.appointment.status =="Completed"
+            billing.appointment.status =="completed" # büyük harf olabilir
             billing.appointment.save()
 
             doctor_models.Notification.objects.create(
