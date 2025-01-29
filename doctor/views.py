@@ -69,7 +69,7 @@ def cancel_appointment(request, appointment_id):
 
     messages.success(request, "Appointment Canceled Successfully")
 
-    return redirect("doctor:appointment_detail", appointment.appointment_id)
+    return redirect("doctor/appointment_detail", appointment.appointment_id)
 
 
 @login_required
@@ -82,7 +82,7 @@ def activate_appointment(request, appointment_id):
 
     messages.success(request, "Appointment Re-Scheduled Successfully")
 
-    return redirect("doctor:appointment_detail", appointment.appointment_id)
+    return redirect("doctor/appointment_detail", appointment.appointment_id)
 
 
 @login_required

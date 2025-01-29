@@ -42,26 +42,26 @@
 
                   {% if appointment.status == "scheduled" %}
                   <a
-                    href="{% url 'doctor:cancel_appointment' appointment.appointment_id %}"
+                    href="{% url 'patient:cancel_appointment' appointment.appointment_id %}"
                     class="btn btn-outline-danger btn-sm"
                     >Cancel Appointment <i class="fas fa-trash ms-2"></i
                   ></a>
                   <a
-                    href="{% url 'doctor:complete_appointment' appointment.appointment_id %}"
+                    href="{% url 'patient:complete_appointment' appointment.appointment_id %}"
                     class="btn btn-outline-success btn-sm"
                     >Complete Appointment
                     <i class="fas fa-check-circle ms-2"></i
                   ></a>
                   {% endif %} {% if appointment.status == "cancelled" %}
                   <a
-                    href="{% url 'doctor:activate_appointment' appointment.appointment_id %}"
+                    href="{% url 'patient:activate_appointment' appointment.appointment_id %}"
                     class="btn btn-success btn-sm"
                     >Activate Appointment
                     <i class="fas fa-check-circle ms-2"></i
                   ></a>
                   {% endif %} {% if appointment.status == "completed" %}
                   <a
-                    href="{% url 'doctor:activate_appointment' appointment.appointment_id %}"
+                    href="{% url 'patient:complete_appointment' appointment.appointment_id %}"
                     class="btn btn-success btn-sm"
                     >Completed <i class="fas fa-check-circle ms-2"></i
                   ></a>

@@ -2,7 +2,8 @@ from django.db import models
 
 
 from userauths import models as userauths_models 
-
+#tarihi formatlamak için import ettik
+from django.utils import timezone
 
 
 class Patient(models.Model):
@@ -13,7 +14,7 @@ class Patient(models.Model):
     mobile = models.CharField(max_length=100, null=True, blank=True)
     adress = models.CharField(max_length=100, null=True, blank=True)
     gender = models.CharField(max_length=100, null=True, blank=True)
-    dob = models.CharField(max_length=100, null=True, blank=True)
+    dob = models.DateTimeField(default=timezone.now, null=True, blank=True)
     blood_group = models.CharField(max_length=100, null=True, blank=True)
     
 
